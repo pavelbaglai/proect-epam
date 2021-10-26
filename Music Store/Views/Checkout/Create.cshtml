@@ -1,0 +1,47 @@
+﻿@model Music_Store.Models.ViewModels.CartViewModel
+
+    @{
+        ViewData["Title"] = "Create";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        TempData["previousPage"] = "checkoutFromCart";
+    }
+
+    <h4>Checkout</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="id" value="@Model.ID" />
+                <input type="hidden" name="customerID" value="@Model.CustomerID" />
+                <input type="hidden" name="totalPrice" value="@Model.TotalPrice" />
+
+                @for (int i = 0; i < Model.Items.Count; i++)
+                {
+                    <input type="hidden" name="Items[@i].ItemID" value="@Model.Items[i].ItemID" />
+                    <input type="hidden" name="Items[@i].Category" value="@Model.Items[i].Category" />
+                    <input type="hidden" name="Items[@i].Price" value="@Model.Items[i].Price" />
+                }
+                <div class="form-group">
+                    <label class="control-label">Total Price</label>
+                    <input asp-for="TotalPrice" class="form-control" disabled />
+                    <span asp-validation-for="TotalPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Credit Card</label>
+                    <select class="form-control" asp-items="ViewBag.CreditCard"><option>Please Select One</option></select>
+                    <p>
+                        Credit card is not in the list? <a href="@Url.Action("Create","CreditCard")">Add Credit Card</a>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+

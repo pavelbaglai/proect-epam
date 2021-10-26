@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Music_Store.Models.ViewModels.InvoiceViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="margin-top: 3em;">
+    <div style="margin-bottom: 1em;">
+        <span class="title">Owned Songs</span>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <span>Name</span>
+                </th>
+                <th>
+                    <span>Artist</span>
+                </th>
+                <th>
+                    <span>category</span>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var invoice in Model)
+            {
+                @foreach (var item in invoice.Items)
+                {
+                    var controllerName = item.Category == nameof(Song) ? "Songs" : "Albums";
+                    <tr>
+                        <td>
+                            <img class="img-fluid" style="max-width: 60px;" src="@item.ImagePath" asp-append-version="true" />
+                            <a asp-controller=@controllerName asp-action="Details" asp-route-id="@item.ID" title="Song" style="color: unset !important; border: unset;">
+                                <span style="font-size: 14px; margin-left: 7px;">@item.ItemName</span>
+                            </a>
+                        </td>
+                        <td style="padding-top: 28px;">
+                            <a asp-controller="Artists" asp-action="Details" asp-route-id="@item.ArtistID" title="Artist" style="color: darkgray; border: unset;">
+                                <span style="font-size: 14px;">@item.ArtistName</span>
+                            </a>
+                        </td>
+                        <td style="padding-top: 28px;">
+                            <span style="font-size: 14px;">@item.Category</span>
+                        </td>
+
+                        <td style="padding-top: 28px;">
+                            <a href="@Url.Action("Download","Checkout", new { id=@item.ItemID, category=item.Category})">Download</a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>

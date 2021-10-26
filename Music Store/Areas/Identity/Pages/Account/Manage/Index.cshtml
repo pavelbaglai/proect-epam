@@ -1,0 +1,94 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<div class="row">
+    <div class="col-md-11 pt-5">
+        <form id="profile-form" method="post" enctype="multipart/form-data">
+            <div class="div-form-group">
+                <div class="form-group p-1" style="display: flex;">
+                    <div class="form-group" title="Profile Image" style="text-align: center; width: 132px; height: 132px; border: 2px solid lightgray;">
+                        <img src="@Model.ViewModel.ImagePath" id="profile-image" asp-append-version="true" style="max-width: 128px; max-height: 128px;" alt="Profile Image" />
+                    </div>
+                    <div class="form-group" style="margin: 10px;">
+                        <div class="form-group" style="position: relative; overflow: hidden; display: inline-block;">
+                            @*<button class="btn btn-orange btn-margin">Upload</button>
+                                <input id="input-image" style="height: 0; overflow: hidden; width: 0; font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0;" asp-for="ViewModel.ImageFile" accept="image/*" onchange="change()" />*@
+
+                            <input asp-for="ViewModel.ImageFile" accept="image/*" id="image-file" onchange="change()" style="overflow: hidden; height: 0; width: 0;" />
+                            <label class="btn btn-orange btn-margin" for="image-file" style="cursor: pointer;">Upload</label>
+                            <input type="hidden" asp-for="ViewModel.ImagePath" />
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="div-form-group">
+                <div class="form-group p-1">
+                    <div class="form-group">
+                        <label asp-for="ViewModel.Firstname"></label>
+                        <input asp-for="ViewModel.Firstname" class="form-control" />
+                        <span asp-validation-for="ViewModel.Firstname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ViewModel.Street"></label>
+                        <input asp-for="ViewModel.Street" class="form-control" />
+                        <span asp-validation-for="ViewModel.Street" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ViewModel.Province"></label>
+                        <input asp-for="ViewModel.Province" class="form-control" />
+                        <span asp-validation-for="ViewModel.Province" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ViewModel.PostalCode"></label>
+                        <input asp-for="ViewModel.PostalCode" class="form-control" />
+                        <span asp-validation-for="ViewModel.PostalCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ViewModel.DateOfBirth"></label>
+                        <input asp-for="ViewModel.DateOfBirth" class="form-control" />
+                        <span asp-validation-for="ViewModel.DateOfBirth" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group p-1">
+                    <div class="form-group">
+                        <label asp-for="ViewModel.Lastname"></label>
+                        <input asp-for="ViewModel.Lastname" class="form-control" />
+                        <span asp-validation-for="ViewModel.Lastname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ViewModel.City"></label>
+                        <input asp-for="ViewModel.City" class="form-control" />
+                        <span asp-validation-for="ViewModel.City" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ViewModel.CountryCode"></label>
+                        <input asp-for="ViewModel.CountryCode" class="form-control" />
+                        <span asp-validation-for="ViewModel.CountryCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ViewModel.Gender"></label>
+                        <input asp-for="ViewModel.Gender" class="form-control" />
+                        <span asp-validation-for="ViewModel.Gender" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <button id="update-profile-button" type="submit" class="btn btn-dark">Save</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script type="text/javascript">
+        function change() {
+            var inputImage = document.getElementById('image-file');
+            document.getElementById('profile-image').src = window.URL.createObjectURL(inputImage.files[0]);
+        }
+    </script>
+}

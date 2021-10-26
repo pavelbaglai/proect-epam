@@ -1,0 +1,107 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+
+<div class="row d-flex justify-content-center align-content-center h-75">
+    <div class="col-md-9">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4 class="pb-3" style="text-align: center">@ViewData["Title"]</h4>
+            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+            <div class="div-form-group">
+                <div class="form-group px-1">
+                    <label asp-for="ViewModel.Email"></label>
+                    <input asp-for="ViewModel.Email" class="form-control" />
+                    <span asp-validation-for="ViewModel.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ViewModel.Nickname"></label>
+                    <input asp-for="ViewModel.Nickname" class="form-control" />
+                    <span asp-validation-for="ViewModel.Nickname" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="div-form-group">
+                <div class="form-group px-1">
+                    <label asp-for="ViewModel.Password"></label>
+                    <input asp-for="ViewModel.Password" class="form-control" />
+                    <span asp-validation-for="ViewModel.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ViewModel.ConfirmPassword"></label>
+                    <input asp-for="ViewModel.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ViewModel.ConfirmPassword" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="div-form-group">
+                <div class="form-group">
+                    <label asp-for="ViewModel.Firstname"></label>
+                    <input asp-for="ViewModel.Firstname" class="form-control" />
+                    <span asp-validation-for="ViewModel.Firstname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ViewModel.Lastname"></label>
+                    <input asp-for="ViewModel.Lastname" class="form-control" />
+                    <span asp-validation-for="ViewModel.Lastname" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="div-form-group">
+                <div class="form-group">
+                    <label asp-for="ViewModel.Street"></label>
+                    <input asp-for="ViewModel.Street" class="form-control" />
+                    <span asp-validation-for="ViewModel.Street" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ViewModel.City"></label>
+                    <input asp-for="ViewModel.City" class="form-control" />
+                    <span asp-validation-for="ViewModel.City" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="div-form-group">
+                <div class="form-group">
+                    <label asp-for="ViewModel.Province"></label>
+                    <input asp-for="ViewModel.Province" class="form-control" />
+                    <span asp-validation-for="ViewModel.Province" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ViewModel.CountryCode"></label>
+                    <input asp-for="ViewModel.CountryCode" class="form-control" />
+                    <span asp-validation-for="ViewModel.CountryCode" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="div-form-group">
+                <div class="form-group">
+                    <label asp-for="ViewModel.PostalCode"></label>
+                    <input asp-for="ViewModel.PostalCode" class="form-control" />
+                    <span asp-validation-for="ViewModel.PostalCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ViewModel.Gender"></label>
+                    <input asp-for="ViewModel.Gender" class="form-control" />
+                    <span asp-validation-for="ViewModel.Gender" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="div-form-group">
+                <div class="form-group">
+                    <label asp-for="ViewModel.DateOfBirth"></label>
+                    <input asp-for="ViewModel.DateOfBirth" class="form-control" />
+                    <span asp-validation-for="ViewModel.DateOfBirth" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" style="visibility:hidden;" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-dark" style="float: right">@ViewData["Title"]</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,97 @@
+﻿@model Music_Store.Models.ViewModels.CartViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    TempData["previousPage"] = "cart";
+
+}
+
+<div style="margin-top: 3em;">
+    <div style="margin-bottom: 1em;">
+        <span class="title">Cart</span>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <span>Name</span>
+                </th>
+                <th>
+                    <span>Artist</span>
+                </th>
+                <th>
+                    <span>category</span>
+                </th>
+                <th>
+                    <span>Price</span>
+                </th>
+                <th>
+                    <span>Select</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                var controllerName = item.Category == nameof(Song) ? "Songs" : "Albums";
+            <tr>
+                <td>
+                    <img class="img-fluid" style="max-width: 60px;" src="@item.ImagePath" asp-append-version="true" />
+                    <a asp-controller=@controllerName asp-action="Details" asp-route-id="@item.ID" title="Song" style="color: unset !important; border: unset;">
+                        <span style="font-size: 14px; margin-left: 7px;">@item.ItemName</span>
+                    </a>
+                </td>
+                <td style="padding-top: 28px;">
+                    <a asp-controller="Artists" asp-action="Details" asp-route-id="@item.ArtistID" title="Artist" style="color: darkgray; border: unset;">
+                        <span style="font-size: 14px;">@item.ArtistName</span>
+                    </a>
+                </td>
+                <td style="padding-top: 28px;">
+                    <span style="font-size: 14px;">@item.Category</span>
+                </td>
+                <td style="padding-top: 28px;">
+                    <span style="font-size: 14px;">$ @item.Price</span>
+                </td>
+                <td style="display:flex; padding-top: 28px;">
+                    <form method="post" asp-action="Edit" asp-route-customerID="@Model.CustomerID" style="margin-right: 7px" title="Delete">
+                        <input class="input-img" type="image" src="~/res/images/etc/delete.png" />
+                        <input type="hidden" name="itemID" value="@item.ItemID" />
+                        <input type="hidden" name="category" value="@item.Category" />
+                    </form>
+                    <form method="post" asp-action="Edit" asp-route-customerID="@Model.CustomerID" title="Move to Wishlist">
+                        <input class="input-img" type="image" src="~/res/images/etc/move_to_wishlist_icon.png" />
+                        <input type="hidden" name="itemID" value="@item.ItemID" />
+                        <input type="hidden" name="category" value="@item.Category" />
+                        <input type="hidden" name="action" value="move" />
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th scope="row" style="font-weight: 400;">Total Price</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <span style="font-size: 14px">$ @Math.Round(Model.Items.Sum(i => i.Price), 2, MidpointRounding.AwayFromZero)</span>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" style="font-weight: 400;">Check out</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    @if (Model.Items.Count != 0)
+                    {
+                        <span style="font-size: 14px"><a href="@Url.Action("Create","Checkout")">Checkout</a></span>
+                    }
+                </td>
+            </tr>
+        </tfoot>
+        
+
+    </table>
+</div>

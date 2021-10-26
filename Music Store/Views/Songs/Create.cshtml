@@ -1,0 +1,94 @@
+﻿@model Music_Store.Models.ViewModels.SongViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h4>Create Song</h4>
+<hr />
+<div class="row">
+    <div class="col-md-11">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="div-form-group">
+                <div class="form-group p-1">
+                    <div class="form-group">
+                        <label asp-for="Genres" class="control-label"></label>
+                        <select asp-for="Genres" class="form-control" asp-items="ViewBag.GenreName" multiple="multiple"></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Artist</label>
+                        <select asp-for="ArtistID" class="form-control" asp-items="ViewBag.ArtistFullname"><option>Please select one</option></select>
+                        <p>
+                            Aritist is not in the list? <a href="@Url.Action("Create","Artists")">Add Artist</a>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Album</label>
+                        <select asp-for="AlbumID" class="form-control" asp-items="ViewBag.AlbumName"><option>Please select one</option></select>
+                        <p>
+                            Album is not in the list? <a href="@Url.Action("Create","Albums")">Add Alnum</a>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Publisher</label>
+                        <select asp-for="PublisherID" class="form-control" asp-items="ViewBag.PublisherName"><option>Please select one</option></select>
+                        <p>
+                            Publisher is not in the list? <a href="@Url.Action("Create","Publishers")">Add Publisher</a>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group"><input asp-for="ImageFile" accept="image/*" /></div>
+                </div>
+                <div class="form-group p-1">
+                    <div class="form-group">
+                        <label asp-for="ReleaseDate" class="control-label"></label>
+                        <input asp-for="ReleaseDate" class="form-control" />
+                        <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="RuntimeInSec" class="control-label"></label>
+                        <input asp-for="RuntimeInSec" class="form-control" />
+                        <span asp-validation-for="RuntimeInSec" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FavouriteCount" class="control-label"></label>
+                        <input asp-for="FavouriteCount" class="form-control" />
+                        <span asp-validation-for="FavouriteCount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PurchaseCount" class="control-label"></label>
+                        <input asp-for="PurchaseCount" class="form-control" />
+                        <span asp-validation-for="PurchaseCount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DataUrl" class="control-label"></label>
+                        <input asp-for="DataUrl" class="form-control" />
+                        <span asp-validation-for="DataUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

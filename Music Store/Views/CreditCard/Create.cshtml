@@ -1,0 +1,69 @@
+﻿@model Music_Store.Models.ViewModels.CreditCardViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+
+
+<div style="margin-top: 3em;">
+    <div style="margin-bottom: 1em;">
+        <span class="title">Add a credit card</span>
+    </div>
+        <form method="post" asp-action="Create">
+
+            <label for="creditcard">Credit Card*</label><br />
+            <input type="text" id="creditcard" name="creditcardnumber"><br />
+            <span asp-validation-for="CreditCardNumber" class="text-danger"></span><br />
+
+            <label for="fname">First Name</label><br />
+            <input type="text" id="fname" name="firstname"><br />
+            <span asp-validation-for="FirstName" class="text-danger"></span><br />
+
+            <label for="lname">Last Name</label><br />
+            <input type="text" id="lname" name="lastname"><br />
+            <span asp-validation-for="LastName" class="text-danger"></span><br />
+
+            <label for="address">Address</label><br />
+            <input type="text" id="address" name="address"><br />
+            <span asp-validation-for="Address" class="text-danger"></span><br />
+
+            <label for="city">City</label><br />
+            <input type="text" id="city" name="city"><br />
+            <span asp-validation-for="City" class="text-danger"></span><br />
+
+            <label for="postalcode">Postal Code</label><br />
+            <input type="text" id="postalcode" name="postalcode"><br />
+            <span asp-validation-for="PostalCode" class="text-danger"></span><br />
+
+            <label for="Provice">Province</label><br />
+            <select id="Provice" name="Provice">
+                <option value="Alberta">Alberta</option>
+                <option value="British Columbia">British Colombia</option>
+                <option value="Manitoba">Manitoba</option>
+                <option value="New Brunswick">New Brunswick</option>
+                <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                <option value="North West Territories">Northwest Territorries</option>
+                <option value="Nova Scotia">Nova Scotia</option>
+                <option value="Nunavut">Nunavut</option>
+                <option value="Ontario">Ontario</option>
+                <option value="Prince Edward Island">Prince Edward Island</option>
+                <option value="Quebec">Quebec</option>
+                <option value="Saskatchewan">Saskatchewan</option>
+                <option value="Yukon">Yukon</option>
+            </select><br />
+            <span></span><br />
+
+            <label for="country">Country</label><br />
+            <select id="country" name="country">
+                <option value="Canada">Canada</option>
+                <option value="USA">USA</option>
+            </select>
+            <span></span><br /><br />
+
+
+            <input type="submit" value="Submit">
+
+        </form>
+    </div>

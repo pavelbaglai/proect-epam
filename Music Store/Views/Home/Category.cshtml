@@ -1,0 +1,123 @@
+﻿@using Music_Store.Models.ViewModels
+@model CategoryViewModel
+
+@{
+    int counter = 0;
+    ViewData["Title"] = Model.Category.ToString();
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <style type="text/css">
+        .sp-title {
+            font-size: 32px;
+            text-align: left;
+            float: left;
+        }
+
+        .sp-title-link {
+            text-align: right;
+            float: right;
+        }
+
+        .td-width {
+            width: 20%;
+            text-align: center;
+        }
+
+        .album-img {
+            width: 100%;
+            display: block;
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
+        a.song-link-style:link {
+            color: black;
+            text-decoration: none;
+        }
+
+        a.song-link-style:visited {
+            color: black;
+            text-decoration: none;
+        }
+
+        a.song-link-style:hover {
+            color: black;
+            text-decoration: underline;
+        }
+    </style>
+}
+
+<div>
+    <div class="text-center">
+        <h1 class="display-4">@Model.Category</h1>
+        <p>Discover @Model.Category songs.<b></b></p>
+    </div>
+
+    <!--Displaying the songs-->
+    <section>
+        <div style="overflow-x:auto">
+            <table>
+                @do
+                {
+                    <tr>
+                        @do
+                        {
+                            var imgSrc = string.Concat("../", Model.SongList[counter].ImagePath.ToString().Substring(2));
+
+                            <td style="text-align:center; width:219px">
+                                <a class="song-link-style" href="@Url.Action("Details", "Songs", new { Model.SongList[counter].ID })">
+                                    <img src=@imgSrc width="219">
+                                    @Model.SongList[counter].Name.ToString()
+                                </a>
+                                <br />
+                                <a class="song-link-style" href="@Url.Action("Details", "Artists", new { Model.SongList[counter].Artist.ID })">
+                                    <b>@Model.SongList[counter].Artist.Stagename.ToString()</b>
+                                </a>
+                            </td>
+
+                            counter++;
+                        } while (counter % 5 != 0 && counter < Model.SongList.Count);
+                    </tr>
+                    <tr><td><br /></td></tr>
+                } while (counter < Model.SongList.Count);
+
+
+                @*
+                @for (int i = 0; i < Model.SongList.Count; i++)
+                    {
+                        if ((i % 5) == 0)
+                        {
+                            <tr></tr>
+                        }
+                        else if ((i % 5) != 0)
+                        {
+                            <tr>
+                                @while ((i % 5) != 0 && i < Model.SongList.Count)
+                                {
+                                    var imgSrc = string.Concat("../", Model.SongList[i].ImagePath.ToString().Substring(2));
+
+                                    <td style="text-align:center; width:219px">
+                                        <a class="song-link-style" href="@Url.Action("Details", "Songs", new { Model.SongList[i].ID })">
+                                            <img src=@imgSrc width="219">
+                                            @Model.SongList[i].Name.ToString()
+                                        </a>
+                                        <br />
+                                        <a class="song-link-style" href="@Url.Action("Details", "Artists", new { Model.SongList[i].Artist.ID })">
+                                            <b>@Model.SongList[i].Artist.Stagename.ToString()</b>
+                                        </a>
+                                    </td>
+
+                                    i++;
+                                }
+                            </tr>
+                        }
+                    }
+                *@
+            </table>
+        </div>
+    </section>
+</div>

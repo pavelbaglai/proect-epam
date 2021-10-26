@@ -1,0 +1,198 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.div-form-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    height: 100%;
+}
+
+span {
+    font-size: 13px;
+}
+
+.footer {
+    /*position: absolute;*/
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+@media (max-width: 576px) {
+    .col-sm-3 {
+        -ms-flex: 0 0 41%;
+        flex: 0 0 41%;
+        max-width: 41%;
+    }
+
+    .col-sm-4 {
+        -ms-flex: 0 0 57%;
+        flex: 0 0 57%;
+        max-width: 57%;
+    }
+}
+
+dt {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.btn-orange {
+    color: #fff;
+    background-color: #F7A000;
+    border-color: #F7A000;
+}
+
+.font-orange {
+    color: #F7A000;
+    font-weight: 600;
+}
+
+.font-orange:hover {
+    color: orange;
+}
+
+
+.btn-margin {
+    margin: 0 1em 0 1em;
+}
+
+.title {
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+
+.sub-title {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.a-btn {
+    font-size: 14px;
+    color: unset !important;
+}
+
+.a-btn:hover {
+    text-decoration: none;
+}
+
+.sub-div {
+    margin: 4em 0 4em 0;
+}
+
+.td-align {
+    padding-top: 28px;
+}
+
+.input-img:focus {
+    outline: none;
+}
+
+.rating {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rating:not(:checked) > input {
+    position: absolute;
+    opacity: 0;
+}
+
+.rating:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    /*cursor: pointer;*/
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #ffc700;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}    

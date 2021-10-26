@@ -1,0 +1,199 @@
+﻿<!--model IEnumerable<Music_Store.Models.Song>-->
+@model List<Music_Store.Models.Song>
+
+@{
+    ViewData["Title"] = "Home Page";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <style type="text/css">
+        .sp-title {
+            font-size:32px;
+            text-align:left;
+            float:left;
+        }
+        .sp-title-link {
+            text-align: right;
+            float: right;
+        }
+        .td-width {
+            width:20%;
+            text-align:center;
+        }
+        .album-img {
+            width:100%;
+            display:block;
+        }
+        .hidden {
+            visibility:hidden;
+        }
+        a.song-link-style:link {
+            color:black;
+            text-decoration:none;
+        }
+        a.song-link-style:visited {
+            color: black;
+            text-decoration:none;
+        }
+        a.song-link-style:hover {
+            color: black;
+            text-decoration:underline;
+        }
+    </style>
+}
+
+    <div>
+        <div class="text-center">
+            <h1 class="display-4">Welcome</h1>
+            <p>Discover music to fit every aspect of your lifestyle.</p>
+        </div>
+
+        <!--Search bar-->
+        <section>
+            <form asp-controller="Home" asp-action="Search">
+                <table style="width:100%">
+                    <tr>
+                        <td colspan="4">
+                            <input type="text" class="form-control" name="SearchString" style="width:99%; font-size:22px" placeholder="Search billions of songs/artists/albums..." />
+                        </td>
+                        <td colspan="1">
+                            <input type="submit" class="btn btn-outline-primary" value="Search" style="width:100%; font-size:22px" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </section>
+        <br />
+        <hr />
+        <!--Displaying the songs-->
+        <form asp-controller="Home" asp-action="Details">
+            <!--Hot 100-->
+            <section>
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <div class="sp-title">Hot 100 Songs</div>
+                        </td>
+                        <td>
+                            <div class="sp-title-link"><b><a href="@Url.Action("Category", "Home", new { category = "hot100" })">MORE</a></b></div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div style="overflow-x:auto">
+                    <table>
+                        <tr>
+                            @foreach (var item in Model)
+                            {
+                                //var imgSrc = Html.DisplayFor(i => item.ImagePath);
+                                var imgSrc = item.ImagePath.ToString().Substring(2);
+
+                                <td style="text-align:center">
+                                    <a class="song-link-style" href="@Url.Action("Details", "Songs", new { item.ID })">
+                                        <img src=@imgSrc height="220">
+                                        @item.Name.ToString()
+                                    </a>
+                                    <br />
+                                    <a class="song-link-style" href="@Url.Action("Details", "Artists", new { item.Artist.ID })">
+                                        <b>@item.Artist.Stagename.ToString()</b>
+                                    </a>
+                                </td>
+                            }
+                        </tr>
+                        <!--
+                    <tr>
+                       for (int i = 0; i < 5; i++)
+                        {
+                            var item = Model[i];
+
+                            <td class="td-width"><img class="album-img" src=item.ImagePath.ToString().Substring(2)></td>
+                        }
+                    </tr>
+                    <tr>
+                        for (int i = 0; i < 5; i++)
+                        {
+                            var item = Model[i];
+
+                            <td class="td-width">item.Name.ToString()<br><b>item.Artist.Stagename.ToString()</b></td>
+                        }
+                    </tr>
+                -->
+                    </table>
+                </div>
+
+                <br />
+                <hr />
+                <!--Trending Now-->
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <div class="sp-title">Songs Trending Now</div>
+                        </td>
+                        <td>
+                            <div class="sp-title-link"><b><a href="@Url.Action("Category", "Home", new { category = "trending" })">MORE</a></b></div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div style="overflow-x:auto">
+                    <table>
+                        <tr>
+                            @for (int i = 10; i < 15; i++)
+                            {
+                                var item = Model[i];
+
+                                <td style="text-align:center">
+                                    <a class="song-link-style" href="@Url.Action("Details", "Songs", new { item.ID })">
+                                        <img src=@item.ImagePath.ToString().Substring(2) height="219">
+                                        @item.Name.ToString()
+                                    </a>
+                                    <br />
+                                    <a class="song-link-style" href="@Url.Action("Details", "Artists", new { item.Artist.ID })">
+                                        <b>@item.Artist.Stagename.ToString()</b>
+                                    </a>
+                                </td>
+                            }
+                        </tr>
+                    </table>
+                </div>
+
+                <br />
+                <hr />
+                <!--Up & Coming-->
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <div class="sp-title">Up & Coming Songs</div>
+                        </td>
+                        <td>
+                            <div class="sp-title-link"><b><a href="@Url.Action("Category", "Home", new { category = "upandcoming" })">MORE</a></b></div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div style="overflow-x:auto">
+                    <table>
+                        <tr>
+                            @for (int i = (Model.Count - 1); i > (Model.Count - 6); i--)
+                            {
+                                var item = Model[i];
+
+                                <td style="text-align:center">
+                                    <a class="song-link-style" href="@Url.Action("Details", "Songs", new { item.ID })">
+                                        <img src=@item.ImagePath.ToString().Substring(2) height="219">
+                                        @item.Name.ToString()
+                                    </a>
+                                    <br />
+                                    <a class="song-link-style" href="@Url.Action("Details", "Artists", new { item.Artist.ID })">
+                                        <b>@item.Artist.Stagename.ToString()</b>
+                                    </a>
+                                </td>
+                            }
+                        </tr>
+                    </table>
+                </div>
+            </section>
+        </form>
+    </div>
+

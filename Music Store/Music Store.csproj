@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-Music_Store-A6C54E5C-0CB3-4CC2-AF11-1A0CA4EDD2B0</UserSecretsId>
+    <RootNamespace>Music_Store</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\NewFolder1\**" />
+    <Content Remove="wwwroot\NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder1\**" />
+    <None Remove="wwwroot\NewFolder1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20201015185724_CreateTables.cs" />
+    <Compile Remove="Data\Migrations\20201015185724_CreateTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201015191454_CreateTables.cs" />
+    <Compile Remove="Data\Migrations\20201015191454_CreateTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201015192824_CreateTables.cs" />
+    <Compile Remove="Data\Migrations\20201015192824_CreateTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201015203653_ChangeFieldName.cs" />
+    <Compile Remove="Data\Migrations\20201015203653_ChangeFieldName.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201123200221_addWishlistTable.cs" />
+    <Compile Remove="Data\Migrations\20201123200221_addWishlistTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201125230902_addSongDataUrl.cs" />
+    <Compile Remove="Data\Migrations\20201125230902_addSongDataUrl.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
+    <PackageReference Include="Stripe.net" Version="39.28.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\res\images\albums\" />
+    <Folder Include="wwwroot\res\images\artists\" />
+    <Folder Include="wwwroot\res\images\songs\" />
+    <Folder Include="wwwroot\res\newSongs\" />
+    <Folder Include="wwwroot\res\newImages\songs\" />
+  </ItemGroup>
+
+</Project>
